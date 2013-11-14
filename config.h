@@ -82,9 +82,9 @@
  * if the C compiler is 3.1 or later, then uncomment the
  * lines for 64 bit seed generation
  */
-/* #define SUPPORT_64BITS*/ 
-/* #define DSS_HUGE long long*/ 
-/* #define HUGE_COUNT	1 */
+#define SUPPORT_64BITS
+#define DSS_HUGE long long
+#define HUGE_COUNT	1 
 #define STDLIB_HAS_GETOPT
 #endif /* IBM */
 
@@ -98,7 +98,20 @@
 
 #ifdef LINUX
 #define STDLIB_HAS_GETOPT
+#define SUPPORT_64BITS
+#define DSS_HUGE long long int
+#define HUGE_TYPE	int64_t
+#define HUGE_FORMAT     "%lld"
+#define HUGE_COUNT	1
+#define HUGE_DATE_FORMAT        "%02lld"
+#define RNG_A   6364136223846793005ull
+#define RNG_C   1ull
 #endif /* LINUX */
+
+#ifdef MAC
+#define _POSIX_SOURCE
+#define STDLIB_HAS_GETOPT
+#endif /* MAC */
 
 #ifdef SGI
 #define STDLIB_HAS_GETOPT

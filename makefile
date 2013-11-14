@@ -8,13 +8,13 @@ CC      = gcc
 # Current values for MACHINE are:  ATT, DOS, HP, IBM, ICL, MVS, 
 #                                  SGI, SUN, U2200, VMS, LINUX
 # Current values for WORKLOAD are:  SSBM, TPCH, TPCR
-DATABASE=DB2 
+DATABASE=SQLSERVER
 MACHINE =LINUX 
 WORKLOAD =SSBM 
 #
 # add -EDTERABYTE if orderkey will execeed 32 bits (SF >= 300)
 # and make the appropriate change in gen_schema() of runit.sh
-CFLAGS	= -O -DDBNAME=\"dss\" -D$(MACHINE) -D$(DATABASE) -D$(WORKLOAD)
+CFLAGS	= -g -DDBNAME=\"dss\" -D$(MACHINE) -D$(DATABASE) -D$(WORKLOAD) -D_LARGEFILE64_SOURCE  -DRNG_TEST -D_FILE_OFFSET_BITS=64
 LDFLAGS = -O
 # The OBJ,EXE and LIB macros will need to be changed for compilation under
 #  Windows NT
